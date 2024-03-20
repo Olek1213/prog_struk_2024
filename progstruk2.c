@@ -232,7 +232,7 @@ int zad2_19(){
 }
 
 //zad2.20
-int zad2_20(n){
+int zad2_20(int n){
     if(n==0){
         return 1;
     }
@@ -240,8 +240,74 @@ int zad2_20(n){
         return n*zad2_20(n-1);
     }
 }
+
+//zad2.21
+int zad2_21(int n){
+    if(n==0){
+        return 1;
+    }
+    else {
+        return 2*zad2_21(n-1)+5;
+    }
+}
+
+//zad2.23
+int zad2_23(int n){
+    if(n<=1){
+        return 1;
+    }
+    else {
+        return zad2_23(n-1)+zad2_23(n-2);
+    }
+}
+
+//zad2.24
+int zad2_24(int n){
+    int suma = 0;
+    if(n<=1){
+        return 1;
+    }
+    else {
+        for(int i=0;i<n;i++){
+        suma += zad2_24(i);
+        }
+    }
+    return suma;
+}
+
+//zad2.25
+int zad2_25(int n){
+    if(n<=1){
+        return 1;
+    }
+    else {
+        if(n%2==0){
+            return zad2_25(n-1)+n;
+        }
+        else {
+            return zad2_25(n-1)*n;
+        }
+    }
+}
+
+//zad2.27
+int zad2_27(int n, int m){
+    if(m==0){
+        return n;
+    }
+    else {
+        if(n==0){
+            return m;
+        }
+        else {
+            return zad2_27(n-1,m)+zad2_27(n,m-1)+zad2_27(n-1,m-1);
+        }
+    }
+}
+
+
 int main() {
-    int n;
-    scanf("%d",&n);
-    printf("%d",zad2_20(n));
+    int n,m;
+    scanf("%d%d",&n,&m);
+    printf("%d",zad2_27(n,m));
 }
