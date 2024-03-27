@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 /*
 int odejmij(int* x){
     *x+=1;
@@ -52,6 +53,52 @@ int zad3_5(const int * a, const int * b){
 void zad3_6(int n, int * w){
     *w = n;
 }
+
+
+int * zad3_9(){
+    return malloc(sizeof(int));
+}
+
+
+double * zad3_10(){
+    return malloc(sizeof(double));
+}
+
+
+
+int * zad3_11(int n){
+    return malloc(n*sizeof(int));
+}
+
+
+double * zad3_12(int n){
+    return malloc(n*sizeof(double));
+}
+
+
+double zad3_13(double (*fun)(int x), int y){
+    return fun(y);
+}
+
+
+double testowa(int x) {
+    return x*x;
+}
+
+
+bool zad3_14(int (*fun1)(int x),int (*fun2)(int y), unsigned int n){
+    for(int i=0;i<=n;i++){
+        if(!(fun1(i)==fun2(i))){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+void zad3_15(const int * x, int * y){
+    *y = *x;
+}
 int main(){
     /*
     int n=505;
@@ -61,8 +108,13 @@ int main(){
     int a=7;
     printf("%d\n",odejmij(&a));
     printf("%d",a);
+
+    double (*wskaznikdofunkcji)(int);
+    wskaznikdofunkcji = &testowa;
+    printf("%f",zad3_13(wskaznikdofunkcji,8));
     */
     int a, b;
     scanf("%d%d",&a,&b);
-    printf("%d",zad3_2(&a,&b));
+    zad3_15(&a,&b);
+    printf("%d\n%d",a,b);
 }
